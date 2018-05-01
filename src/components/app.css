@@ -1,3 +1,20 @@
 .container {
-  background-color: blue;
+}
+
+.itemContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.itemComponent {
+  display: inline;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  align-self: center;
+  width: 50px;
+  height: 50px;
 }
