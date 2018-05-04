@@ -43,8 +43,8 @@ export default class Students extends Component {
     var emailValidation = /^[\w-_\.\+]+@\w+\.[a-z]{2,}$/i.exec(email)
 
     this.setState({
-      isCodeValid: codeValidation != null,
-      isEmailValid: emailValidation != null,
+      isCodeValid: !!codeValidation,
+      isEmailValid: !!emailValidation,
     })
     return codeValidation && emailValidation
   }
