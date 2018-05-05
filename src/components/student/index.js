@@ -40,7 +40,7 @@ export default class Students extends Component {
 
   isValidInputs = (code, email) => {
     var codeValidation = /^\d{14}$/i.exec(code)
-    var emailValidation = /^[\w-_\.\+]+@\w+\.[a-z]{2,}$/i.exec(email)
+    var emailValidation = /^[\w-_.+]+@\w+\.[a-z]{2,}$/i.exec(email)
 
     this.setState({
       isCodeValid: !!codeValidation,

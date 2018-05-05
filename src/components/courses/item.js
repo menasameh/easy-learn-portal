@@ -17,10 +17,11 @@ export default class Item extends Component {
     this.state = {
       confirmationShown: false,
       editShown: false,
-      newEmail: props.email,
-      newCode: props.code,
+      name: props.name,
+      description: props.description,
       isEmailValid: false,
       isCodeValid: false,
+      year: props.year,
     }
   }
 
@@ -34,7 +35,7 @@ export default class Item extends Component {
     return (
       <Modal isOpen={this.state.confirmationShown} toggle={this.toggleDelete}>
         <ModalHeader toggle={this.toggleDelete}>Confirm deletion</ModalHeader>
-        <ModalBody>Do you want to delete {this.props.email} ?</ModalBody>
+        <ModalBody>Do you want to delete {this.props.name} ?</ModalBody>
         <ModalFooter>
           <Button
             color="primary"
@@ -72,11 +73,12 @@ export default class Item extends Component {
 
   confirmEdit = () => {
     const {
+      description,
+      name,
+      isNameValid,
+      isDescriptionValid,
       editShown,
-      newCode,
-      newEmail,
-      isEmailValid,
-      isCodeValid,
+      year,
     } = this.state
     return (
       <Modal isOpen={editShown} toggle={this.toggleEdit}>
@@ -84,32 +86,49 @@ export default class Item extends Component {
         <ModalBody>
           <Form style={{ marginBottom: 10, marginTop: 10 }}>
             <FormGroup>
-              <Label for="Email">Email</Label>
+              <Label for="Name">Name</Label>
               <Input
                 onChange={data => {
-                  this.isValidInputs(newCode, data.target.value)
-                  this.setState({ newEmail: data.target.value })
+                  this.isValidInputs(data.target.value, description)
+                  this.setState({ name: data.target.value })
                 }}
-                value={newEmail}
-                valid={isEmailValid}
-                type="email"
-                name="email"
-                id="Email"
+                value={name}
+                valid={isNameValid}
+                type="text"
+                name="name"
+                id="Name"
               />
             </FormGroup>
             <FormGroup>
-              <Label for="code">Code</Label>
+              <Label for="Description">Description</Label>
               <Input
                 onChange={data => {
-                  this.isValidInputs(data.target.value, newEmail)
-                  this.setState({ newCode: data.target.value })
+                  this.isValidInputs(name, data.target.value)
+                  this.setState({ description: data.target.value })
                 }}
-                value={newCode}
-                valid={isCodeValid}
-                type="number"
-                name="code"
-                id="code"
+                value={description}
+                valid={isDescriptionValid}
+                type="text"
+                name="description"
+                id="Description"
               />
+            </FormGroup>
+            <FormGroup>
+              <Label for="year">Year</Label>
+              <Input
+                type="select"
+                name="year"
+                id="year"
+                onChange={data => {
+                  this.setState({ year: data.target.value })
+                }}
+                value={year}
+              >
+                <option value="0">Year 1</option>
+                <option value="1">Year 2</option>
+                <option value="2">Year 3</option>
+                <option value="3">Year 4</option>
+              </Input>
             </FormGroup>
           </Form>
         </ModalBody>
@@ -118,7 +137,7 @@ export default class Item extends Component {
             color="primary"
             onClick={() => {
               this.toggleEdit()
-              this.props.onEdit(newCode, newEmail)
+              this.props.onEdit(name, year, description)
             }}
           >
             Update
@@ -132,27 +151,23 @@ export default class Item extends Component {
   }
 
   render() {
-    const { code, email, registered, isLabel } = this.props
-    const rightIcon = require('../../img/right.png')
-    const wrongIcon = require('../../img/wrong.png')
+    const { name, description, year, isLabel } = this.props
     return (
       <div className={'itemContainer'}>
         <div style={{ flex: 1 }} className={'itemComponent'}>
           <span style={{ textAlign: 'left' }}>
-            {isLabel ? 'Student Code' : code}
+            {isLabel ? 'Course Name' : name}
           </span>
         </div>
         <div style={{ flex: 1 }} className={'itemComponent'}>
           <span style={{ textAlign: 'left' }}>
-            {isLabel ? 'Student Email' : email}
+            {isLabel ? 'Course description' : description}
           </span>
         </div>
         <div style={{ flex: 1 }} className={'itemComponent'}>
-          {isLabel ? (
-            <span style={{ textAlign: 'center' }}>Registered Student</span>
-          ) : (
-            <img className={'icon'} src={registered ? rightIcon : wrongIcon} />
-          )}
+          <span style={{ textAlign: 'center' }}>
+            {isLabel ? 'Course Year' : `Year ${eval(year) + 1}`}
+          </span>
         </div>
         <div
           onClick={this.toggleEdit}
