@@ -51,7 +51,7 @@ export default class Students extends Component {
 
   onAddStudent = e => {
     e.preventDefault()
-    const { code, email, list } = this.state
+    const { code, email } = this.state
 
     if (!this.isValidInputs(code, email)) return
 

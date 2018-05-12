@@ -76,7 +76,7 @@ export default class Courses extends Component {
 
   onAddCourse = e => {
     e.preventDefault()
-    const { name, description, year, list } = this.state
+    const { name, description, year } = this.state
 
     if (!this.isValidInputs(name, description)) return
 
