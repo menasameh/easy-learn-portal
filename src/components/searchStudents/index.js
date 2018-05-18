@@ -48,7 +48,7 @@ export default class searchStudents extends Component {
             ),
           })
         }}
-        placeholder="Search Taken Courses..."
+        placeholder="Search Students ..."
       />
     )
   }

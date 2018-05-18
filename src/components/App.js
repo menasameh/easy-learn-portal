@@ -6,6 +6,7 @@ import Students from './student'
 import Courses from './courses'
 import manageCourses from './manageCourses'
 import searchStudents from './searchStudents'
+import Navigation from './nav'
 
 import './app.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -13,6 +14,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 const App = () => {
   return (
     <div>
+      <Navigation />
       <Router>
         <div className={'container'}>
           <Switch>
