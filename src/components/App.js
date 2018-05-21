@@ -10,11 +10,13 @@ import Navigation from './nav'
 
 import './app.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import '../css/new-age.min.css'
 
 const App = () => {
   return (
     <div>
       <Navigation />
+      <script src="js/new-age.min.js" />
       <Router>
         <div className={'container'}>
           <Switch>
@@ -30,6 +32,11 @@ const App = () => {
           </Switch>
         </div>
       </Router>
+      <footer>
+        <div className="container">
+          <p>&copy; Easy Learn 2018. All Rights Reserved.</p>
+        </div>
+      </footer>
     </div>
   )
 }
