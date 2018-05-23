@@ -35,6 +35,10 @@ export default class Navigation extends React.Component {
         id="mainNav"
       >
         <div className="headerContainer container">
+          <img
+            src={require('../../img/logo.jpg')}
+            style={{ width: 50, height: 50 }}
+          />
           <a className="navbar-brand js-scroll-trigger" href="/">
             Easy Learn
           </a>
@@ -54,6 +58,11 @@ export default class Navigation extends React.Component {
               <li className="nav-item">
                 <a className="nav-link js-scroll-trigger" href="/students">
                   Students
+                </a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link js-scroll-trigger" href="/doctors">
+                  Doctors
                 </a>
               </li>
               <li className="nav-item">

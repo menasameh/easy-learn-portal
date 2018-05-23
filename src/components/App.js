@@ -11,16 +11,18 @@ import Navigation from './nav'
 import './app.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../css/new-age.min.css'
+import Doctors from './doctor'
 
 const App = () => {
   return (
-    <div>
+    <div className={'backgroundImage'}>
       <Navigation />
       <script src="js/new-age.min.js" />
       <Router>
         <div className={'container'}>
           <Switch>
             <Route exact path="/" component={Home} />
+            <Route exact path="/doctors" component={Doctors} />
             <Route exact path="/students" component={Students} />
             <Route exact path="/courses" component={Courses} />
             <Route exact path="/manageCourses" component={searchStudents} />
