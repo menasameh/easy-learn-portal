@@ -32,8 +32,10 @@ export default class Students extends Component {
           code: item[0],
           email: item[1].email,
           registered: !item[1].valid,
+          type: item[1].type,
         }
       })
+      list = list.filter(item => item.type === 'student')
       this.setState({ list })
     })
   }
@@ -94,7 +96,7 @@ export default class Students extends Component {
     return (
       <Form inline style={{ marginBottom: 10, marginTop: 10 }}>
         <FormGroup>
-          <Label style={{ marginRight: 10 }} for="Email">
+          <Label className="labels" style={{ marginRight: 10 }} for="Email">
             Email
           </Label>
           <Input
@@ -111,7 +113,11 @@ export default class Students extends Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label style={{ marginRight: 10, marginLeft: 50 }} for="code">
+          <Label
+            className="labels"
+            style={{ marginRight: 10, marginLeft: 50 }}
+            for="code"
+          >
             Code
           </Label>
           <Input
@@ -162,7 +168,7 @@ export default class Students extends Component {
   render() {
     return (
       <div>
-        <h1>Students</h1>
+        <h1 className="labels">Students</h1>
         {this._renderList()}
       </div>
     )

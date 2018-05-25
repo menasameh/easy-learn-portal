@@ -182,7 +182,7 @@ export default class manageCourses extends Component {
 
   render() {
     return (
-      <div>
+      <div className="labels">
         {this.state.email && <h1>{`${this.state.email}'s Courses`}</h1>}
         <div style={{ display: 'flex', flexDirection: 'row' }}>
           {this._renderInList()}

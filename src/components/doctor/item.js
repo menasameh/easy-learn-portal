@@ -139,17 +139,17 @@ export default class Item extends Component {
       <div className={'itemContainer'}>
         <div style={{ flex: 1 }} className={'itemComponent'}>
           <span style={{ textAlign: 'left' }}>
-            {isLabel ? 'Student Code' : code}
+            {isLabel ? 'Doctor Code' : code}
           </span>
         </div>
         <div style={{ flex: 1 }} className={'itemComponent'}>
           <span style={{ textAlign: 'left' }}>
-            {isLabel ? 'Student Email' : email}
+            {isLabel ? 'Doctor Email' : email}
           </span>
         </div>
         <div style={{ flex: 1 }} className={'itemComponent'}>
           {isLabel ? (
-            <span style={{ textAlign: 'center' }}>Registered Student</span>
+            <span style={{ textAlign: 'center' }}>Registered Doctor</span>
           ) : (
             <img className={'icon'} src={registered ? rightIcon : wrongIcon} />
           )}

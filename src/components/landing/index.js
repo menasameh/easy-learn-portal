@@ -7,10 +7,7 @@ const Home = ({ location }) => {
         <div className="container">
           <div className="row">
             <div className="col-md-8 mx-auto">
-              <h3
-                className="section-heading"
-                style={{ fontSize: 50, color: '#fff' }}
-              >
+              <h3 className="section-heading labels" style={{ fontSize: 50 }}>
                 Easy Learn Facilitates the communication between Students and
                 Doctors
               </h3>

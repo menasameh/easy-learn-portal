@@ -163,7 +163,11 @@ export default class Courses extends Component {
     return (
       <Form inline style={{ marginBottom: 10, marginTop: 10 }}>
         <FormGroup>
-          <Label style={{ marginRight: 10, marginLeft: 50 }} for="Name">
+          <Label
+            className="labels"
+            style={{ marginRight: 10, marginLeft: 50 }}
+            for="Name"
+          >
             Name
           </Label>
           <Input
@@ -180,7 +184,11 @@ export default class Courses extends Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label style={{ marginRight: 10 }} for="Description">
+          <Label
+            className="labels"
+            style={{ marginRight: 10 }}
+            for="Description"
+          >
             Description
           </Label>
           <Input
@@ -197,7 +205,7 @@ export default class Courses extends Component {
           />
         </FormGroup>
         <FormGroup>
-          <Label style={{ marginRight: 10 }} for="year">
+          <Label className="labels" style={{ marginRight: 10 }} for="year">
             Year
           </Label>
           <Input
@@ -252,7 +260,7 @@ export default class Courses extends Component {
   render() {
     return (
       <div>
-        <h1>Courses</h1>
+        <h1 className="labels">Courses</h1>
         {this._renderList()}
       </div>
     )
