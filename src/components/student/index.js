@@ -10,8 +10,9 @@ import {
   ListGroupItem,
 } from 'reactstrap'
 import Item from './item'
+import { withAlert } from 'react-alert'
 
-export default class Students extends Component {
+class Students extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -60,17 +61,28 @@ export default class Students extends Component {
     database
       .ref('codes')
       .child(code)
-      .set({
-        email: this.state.email,
-        type: 'student',
-        valid: true,
+      .once('value', data => {
+        data = data.val()
+        if (!data) {
+          database
+            .ref('codes')
+            .child(code)
+            .set({
+              email: this.state.email,
+              type: 'student',
+              valid: true,
+            })
+          this.setState({
+            code: '',
+            email: '',
+            isEmailValid: null,
+            isCodeValid: null,
+          })
+          this.props.alert.success('Student Added successfully')
+        } else {
+          this.props.alert.error('Code is already used')
+        }
       })
-    this.setState({
-      code: '',
-      email: '',
-      isEmailValid: null,
-      isCodeValid: null,
-    })
   }
 
   removeStudent = code => {
@@ -174,3 +186,5 @@ export default class Students extends Component {
     )
   }
 }
+
+export default withAlert(Students)
