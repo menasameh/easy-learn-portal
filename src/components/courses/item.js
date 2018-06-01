@@ -82,7 +82,7 @@ export default class Item extends Component {
     } = this.state
     return (
       <Modal isOpen={editShown} toggle={this.toggleEdit}>
-        <ModalHeader toggle={this.toggleEdit}>Edit Student Data</ModalHeader>
+        <ModalHeader toggle={this.toggleEdit}>Edit Course Data</ModalHeader>
         <ModalBody>
           <Form style={{ marginBottom: 10, marginTop: 10 }}>
             <FormGroup>

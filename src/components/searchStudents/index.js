@@ -106,7 +106,7 @@ export default class searchStudents extends Component {
   render() {
     return (
       <div>
-        <h1 className="labels">Search Students</h1>
+        <h1 className="labels">Search Students and Doctors</h1>
         {this._renderList()}
       </div>
     )

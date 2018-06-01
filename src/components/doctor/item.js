@@ -10,8 +10,9 @@ import {
   Input,
   Label,
 } from 'reactstrap'
+import { withAlert } from 'react-alert'
 
-export default class Item extends Component {
+class Item extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,7 +25,11 @@ export default class Item extends Component {
     }
   }
 
-  toggleDelete = () => {
+  toggleDelete = registered => {
+    if (registered) {
+      this.props.alert.error("Can't delete a Registered User")
+      return
+    }
     this.setState({
       confirmationShown: !this.state.confirmationShown,
     })
@@ -53,7 +58,11 @@ export default class Item extends Component {
     )
   }
 
-  toggleEdit = () => {
+  toggleEdit = registered => {
+    if (registered) {
+      this.props.alert.error("Can't Edit a Registered User's data")
+      return
+    }
     this.setState({
       editShown: !this.state.editShown,
     })
@@ -80,7 +89,7 @@ export default class Item extends Component {
     } = this.state
     return (
       <Modal isOpen={editShown} toggle={this.toggleEdit}>
-        <ModalHeader toggle={this.toggleEdit}>Edit Student Data</ModalHeader>
+        <ModalHeader toggle={this.toggleEdit}>Edit Doctor Data</ModalHeader>
         <ModalBody>
           <Form style={{ marginBottom: 10, marginTop: 10 }}>
             <FormGroup>
@@ -155,7 +164,7 @@ export default class Item extends Component {
           )}
         </div>
         <div
-          onClick={this.toggleEdit}
+          onClick={() => this.toggleEdit(registered)}
           style={{ flex: 1 }}
           className={'itemComponent'}
         >
@@ -166,7 +175,7 @@ export default class Item extends Component {
           )}
         </div>
         <div
-          onClick={this.toggleDelete}
+          onClick={() => this.toggleDelete(registered)}
           style={{ flex: 1 }}
           className={'itemComponent'}
         >
@@ -182,3 +191,5 @@ export default class Item extends Component {
     )
   }
 }
+
+export default withAlert(Item)
